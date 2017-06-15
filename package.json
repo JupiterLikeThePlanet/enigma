@@ -1,7 +1,7 @@
 {
-  "name": "boilerplate",
+  "name": "enigma",
   "version": "1.0.0",
-  "description": "boilerplate",
+  "description": "encrypt/decrypt messages",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,10 +9,10 @@
   "author": "Jupiter Baudot",
   "license": "MIT",
   "dependencies": {
-    "express": "*",
     "body-parser": "^1.13.2",
-    "react": "^0.14.9",
-    "react-dom": "^0.14.9",
+    "express": "*",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
     "react-toolbox": "^2.0.0-beta.12"
   },
   "devDependencies": {
