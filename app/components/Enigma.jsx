@@ -5,29 +5,42 @@ var Passphrase = require('Passphrase');
 var Enigma = React.createClass({
 
 	getInitialState: function () {
-        return {
-            name: '',
-            message: '',
-            expiration_date: ''
-            // passphrase: this.props.passphrase
-        };
+      var new_passphrase = this.onGenerate();
+      return {
+          name: '',
+          message: '',
+          expiration_date: '',
+          passphrase: ''
+      };
     },
 
 
 
-    generatePassphrase: function(key, passphrase_length) {
-        console.log("hit generatePassphrase function");
+    // generatePassphrase: function(key, passphrase_length) {
+    //     console.log("hit generatePassphrase function");
 
-       	var pp = ''
+    //    	var pp = ''
 
-        var index = (Math.random() * (key.length - 1)).toFixed(0);  
+    //     var index = (Math.random() * (key.length - 1)).toFixed(0);  
 
-        for (var i = 0; i < passphrase_length; i++){
-        	pp += key.charAt(Math.floor(Math.random()*key.length))
-        	// console.log(pp += key.charAt(Math.floor(Math.random()*key.length)));
-        }
+    //     for (var i = 0; i < passphrase_length; i++){
+    //     	pp += key.charAt(Math.floor(Math.random()*key.length))
+    //     	// console.log(pp += key.charAt(Math.floor(Math.random()*key.length)));
+    //     }
         
-        return pp
+    //     return pp
+
+    // },
+
+    onGenerate: function(new_passphrase) {
+        // e.preventDefault();
+        // var new_passphrase = generatePassphrase(key, passphrase_length);
+
+        // var new_passphrase = this.props.handleGenerate(key, passphrase_length);
+
+        this.setState({
+            passphrase: new_passphrase
+        })
 
     },
 
@@ -42,7 +55,7 @@ var Enigma = React.createClass({
 		   <div>
 		       <h2>Enigma component renders here</h2>
 		       <Message name={name} message={message} expiration_date={expiration_date}/>
-		       <Passphrase handleGenerate={this.generatePassphrase}/>
+		       <Passphrase handleGenerate={this.onGenerate}/>
 		   </div>
 		);
    }

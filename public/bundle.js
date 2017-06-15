@@ -22379,51 +22379,63 @@
 	var Passphrase = __webpack_require__(190);
 
 	var Enigma = React.createClass({
-	  displayName: 'Enigma',
+	    displayName: 'Enigma',
 
 
-	  getInitialState: function getInitialState() {
-	    return {
-	      name: '',
-	      message: '',
-	      expiration_date: ''
-	      // passphrase: this.props.passphrase
-	    };
-	  },
+	    getInitialState: function getInitialState() {
+	        var new_passphrase = this.onGenerate();
+	        return {
+	            name: '',
+	            message: '',
+	            expiration_date: '',
+	            passphrase: ''
+	        };
+	    },
 
-	  generatePassphrase: function generatePassphrase(key, passphrase_length) {
-	    console.log("hit generatePassphrase function");
+	    // generatePassphrase: function(key, passphrase_length) {
+	    //     console.log("hit generatePassphrase function");
 
-	    var pp = '';
+	    //    	var pp = ''
 
-	    var index = (Math.random() * (key.length - 1)).toFixed(0);
+	    //     var index = (Math.random() * (key.length - 1)).toFixed(0);  
 
-	    for (var i = 0; i < passphrase_length; i++) {
-	      pp += key.charAt(Math.floor(Math.random() * key.length)
-	      // console.log(pp += key.charAt(Math.floor(Math.random()*key.length)));
-	      );
+	    //     for (var i = 0; i < passphrase_length; i++){
+	    //     	pp += key.charAt(Math.floor(Math.random()*key.length))
+	    //     	// console.log(pp += key.charAt(Math.floor(Math.random()*key.length)));
+	    //     }
+
+	    //     return pp
+
+	    // },
+
+	    onGenerate: function onGenerate(new_passphrase) {
+	        // e.preventDefault();
+	        // var new_passphrase = generatePassphrase(key, passphrase_length);
+
+	        // var new_passphrase = this.props.handleGenerate(key, passphrase_length);
+
+	        this.setState({
+	            passphrase: new_passphrase
+	        });
+	    },
+
+	    render: function render() {
+	        var name = this.state.name;
+	        var message = this.state.message;
+	        var expiration_date = this.state.expiration_date;
+
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'h2',
+	                null,
+	                'Enigma component renders here'
+	            ),
+	            React.createElement(Message, { name: name, message: message, expiration_date: expiration_date }),
+	            React.createElement(Passphrase, { handleGenerate: this.onGenerate })
+	        );
 	    }
-
-	    return pp;
-	  },
-
-	  render: function render() {
-	    var name = this.state.name;
-	    var message = this.state.message;
-	    var expiration_date = this.state.expiration_date;
-
-	    return React.createElement(
-	      'div',
-	      null,
-	      React.createElement(
-	        'h2',
-	        null,
-	        'Enigma component renders here'
-	      ),
-	      React.createElement(Message, { name: name, message: message, expiration_date: expiration_date }),
-	      React.createElement(Passphrase, { handleGenerate: this.generatePassphrase })
-	    );
-	  }
 	});
 
 	module.exports = Enigma;
@@ -22496,15 +22508,12 @@
 /* 190 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(1);
 
-	var key = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	var passphrase_length = 6;
-
 	var Passphrase = React.createClass({
-	    displayName: 'Passphrase',
+	    displayName: "Passphrase",
 
 
 	    // generatePassphrase: function(key, passphrase_length) {
@@ -22517,52 +22526,72 @@
 	    //     // var passphrase = this.refs.passphrase.value
 	    // },
 
-	    getDefaultProps: function getDefaultProps() {
-	        return {
-	            passphrase: ''
-	        };
-	    },
+	    // getDefaultProps: function() {
+	    //     return {
+	    //         passphrase: ''
+	    //     };
+	    // }, 
 
-	    getInitialState: function getInitialState() {
-	        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
-	        return {
-	            passphrase: new_passphrase
-	        };
-	    },
+	    // getInitialState: function () {
+	    //     var new_passphrase = this.props.handleGenerate(key, passphrase_length);
+	    //     return {
+	    //         passphrase: new_passphrase
+	    //     };
+	    // },
 
-	    onGenerate: function onGenerate(e) {
-	        e.preventDefault();
-	        // var new_passphrase = generatePassphrase(key, passphrase_length);
-	        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
+	    // onGenerate: function(e) {
+	    //     e.preventDefault();
+	    //     // var new_passphrase = generatePassphrase(key, passphrase_length);
+	    //     var new_passphrase = this.props.handleGenerate(key, passphrase_length);
 
-	        this.setState({
-	            passphrase: new_passphrase
-	        });
+	    //     this.setState({
+	    //         passphrase: new_passphrase
+	    //     })
+
+	    // },
+
+	    generatePassphrase: function generatePassphrase() {
+	        // e.preventDefault
+
+	        var key = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	        var passphrase_length = 6;
+
+	        console.log("hit generatePassphrase function");
+
+	        var pp = '';
+
+	        var index = (Math.random() * (key.length - 1)).toFixed(0);
+
+	        for (var i = 0; i < passphrase_length; i++) {
+	            pp += key.charAt(Math.floor(Math.random() * key.length));
+	        }
+
+	        this.props.handleGenerate(pp);
 	    },
 
 	    render: function render() {
 	        var passphrase = this.state.passphrase;
 
 	        return React.createElement(
-	            'div',
+	            "div",
 	            null,
 	            React.createElement(
-	                'div',
+	                "div",
 	                null,
 	                React.createElement(
-	                    'p',
+	                    "p",
 	                    null,
-	                    'Your passphrase is: ',
+	                    "Your passphrase is: ",
 	                    passphrase
 	                )
 	            ),
 	            React.createElement(
-	                'div',
+	                "div",
 	                null,
 	                React.createElement(
-	                    'button',
-	                    { onClick: this.onGenerate },
-	                    ' Generate New Passphrase '
+	                    "button",
+	                    { onClick: this.generatePassphrase },
+	                    " Generate New Passphrase "
 	                )
 	            )
 	        );
