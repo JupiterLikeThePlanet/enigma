@@ -57,8 +57,13 @@ var Passphrase = React.createClass ({
 
     },
 
+    componentWillMount: function() {
+      this.generatePassphrase()
+    },
+
+
     render: function () {
-        var passphrase = this.state.passphrase
+        var passphrase = this.props.passphrase
 
         return (
 

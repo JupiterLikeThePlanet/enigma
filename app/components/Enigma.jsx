@@ -5,7 +5,7 @@ var Passphrase = require('Passphrase');
 var Enigma = React.createClass({
 
 	getInitialState: function () {
-      var new_passphrase = this.onGenerate();
+      // var new_passphrase = this.refs.ref_passphrase_component.generatePassphrase();
       return {
           name: '',
           message: '',
@@ -50,12 +50,13 @@ var Enigma = React.createClass({
    		var name = this.state.name
    		var message = this.state.message
    		var expiration_date = this.state.expiration_date
+      var passphrase = this.state.passphrase
 
 		return (
 		   <div>
 		       <h2>Enigma component renders here</h2>
 		       <Message name={name} message={message} expiration_date={expiration_date}/>
-		       <Passphrase handleGenerate={this.onGenerate}/>
+		       <Passphrase handleGenerate={this.onGenerate} passphrase={passphrase} ref="ref_passphrase_component"/>
 		   </div>
 		);
    }

@@ -22383,7 +22383,7 @@
 
 
 	    getInitialState: function getInitialState() {
-	        var new_passphrase = this.onGenerate();
+	        // var new_passphrase = this.refs.ref_passphrase_component.generatePassphrase();
 	        return {
 	            name: '',
 	            message: '',
@@ -22423,6 +22423,7 @@
 	        var name = this.state.name;
 	        var message = this.state.message;
 	        var expiration_date = this.state.expiration_date;
+	        var passphrase = this.state.passphrase;
 
 	        return React.createElement(
 	            'div',
@@ -22433,7 +22434,7 @@
 	                'Enigma component renders here'
 	            ),
 	            React.createElement(Message, { name: name, message: message, expiration_date: expiration_date }),
-	            React.createElement(Passphrase, { handleGenerate: this.onGenerate })
+	            React.createElement(Passphrase, { handleGenerate: this.onGenerate, passphrase: passphrase, ref: 'ref_passphrase_component' })
 	        );
 	    }
 	});
@@ -22569,8 +22570,12 @@
 	        this.props.handleGenerate(pp);
 	    },
 
+	    componentWillMount: function componentWillMount() {
+	        this.generatePassphrase();
+	    },
+
 	    render: function render() {
-	        var passphrase = this.state.passphrase;
+	        var passphrase = this.props.passphrase;
 
 	        return React.createElement(
 	            "div",
