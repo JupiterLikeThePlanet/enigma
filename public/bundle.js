@@ -19763,6 +19763,31 @@
 	var Main = React.createClass({
 	    displayName: 'Main',
 
+
+	    generatePassphrase: function generatePassphrase(key, passphrase_length) {
+	        console.log("hit generatePassphrase function");
+
+	        var pp = '';
+
+	        var index = (Math.random() * (key.length - 1)).toFixed(0);
+
+	        for (var i = 0; i < passphrase_length; i++) {
+	            pp += key.charAt(Math.floor(Math.random() * key.length)
+	            // console.log(pp += key.charAt(Math.floor(Math.random()*key.length)));
+	            );
+	        }
+
+	        return pp;
+	    },
+
+	    // componentWillMount: function () {
+	    //        var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	    //        var passphrase_length = 6
+
+	    //        generatePassphrase(key, passphrase_length);
+	    //    },
+
+
 	    render: function render() {
 	        return React.createElement(
 	            'div',
@@ -19773,7 +19798,7 @@
 	                'Main component renders here'
 	            ),
 	            React.createElement(Message, null),
-	            React.createElement(Passphrase, null)
+	            React.createElement(Passphrase, { handleGenerate: this.generatePassphrase })
 	        );
 	    }
 	});
@@ -19797,6 +19822,7 @@
 	            name: '',
 	            message: '',
 	            expiration_date: ''
+	            // passphrase: this.props.passphrase
 	        };
 	    },
 
@@ -19847,13 +19873,42 @@
 /* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	'use strict';
+	"use strict";
 
 	var React = __webpack_require__(1);
 
 	var Passphrase = React.createClass({
-	    displayName: 'Passphrase',
+	    displayName: "Passphrase",
 
+
+	    // generatePassphrase: function(key, passphrase_length) {
+	    //     console.log("hit generatePassphrase function");
+
+	    //     var index = (Math.random() * (key.length - 1)).toFixed(0);  
+	    //     return passphrase_length > 0 ? key[index] + generatePassphrase(passphrase_length - 1, key) : '';
+
+	    //     // return key[index] + generatePassphrase(passphrase_length - 1, key);
+	    //     // var passphrase = this.refs.passphrase.value
+	    // },
+
+	    onGenerate: function onGenerate(e) {
+	        e.preventDefault();
+	        console.log("Passphrase button pressed");
+
+	        var key = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	        var passphrase_length = 6;
+
+	        // debugger
+	        // var new_passphrase = generatePassphrase(key, passphrase_length);
+	        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
+
+	        console.log(new_passphrase);
+	        // debugger
+	        this.setState({
+	            passphrase: new_passphrase
+	            // passphrase: generatePassphrase(key, passphrase_length)
+	        });
+	    },
 
 	    getDefaultProps: function getDefaultProps() {
 	        return {
@@ -19867,35 +19922,43 @@
 	        };
 	    },
 
-	    onButtonPress: function onButtonPress(e) {
-	        e.preventDefault();
+	    // componentWillMount: function () {
+	    //     var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	    //     var passphrase_length = 6
 
-	        console.log("Passphrase button pressed");
-	        // var passphrase = this.refs.passphrase.value
-	    },
+	    //     generatePassphrase(key, passphrase_length);
+	    // },
+
+	    // onComponentMount: function () {
+	    //     var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+	    //     var passphrase_length = 6
+
+	    //     generatePassphrase(key, passphrase_length);
+	    // },
+
 
 	    render: function render() {
 	        var passphrase = this.state.passphrase;
 	        return React.createElement(
-	            'div',
+	            "div",
 	            null,
 	            React.createElement(
-	                'div',
+	                "div",
 	                null,
 	                React.createElement(
-	                    'p',
+	                    "p",
 	                    null,
-	                    'Your passphrase is: ',
+	                    "Your passphrase is: ",
 	                    passphrase
 	                )
 	            ),
 	            React.createElement(
-	                'div',
+	                "div",
 	                null,
 	                React.createElement(
-	                    'button',
-	                    { onClick: this.onButtonPress },
-	                    ' Generate New Passphrase '
+	                    "button",
+	                    { onClick: this.onGenerate },
+	                    " Generate New Passphrase "
 	                )
 	            )
 	        );

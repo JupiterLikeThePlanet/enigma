@@ -8,6 +8,7 @@ var Message = React.createClass ({
             name: '',
             message: '',
             expiration_date: ''
+            // passphrase: this.props.passphrase
         };
     },
 
