@@ -3,11 +3,11 @@ var React = require('react');
 
 var Passphrase = React.createClass ({
 
-    getDefaultProps: function() ({
+    getDefaultProps: function() {
         return {
             passphrase: 'AmBtRx7l'
         };
-    }), 
+    }, 
 
     getInitialState: function () {
         return {
@@ -30,7 +30,7 @@ var Passphrase = React.createClass ({
             <div>
 
                 <div>
-                    <p>Your passphrase is: {passphrase}<p>
+                    <p>Your passphrase is: {passphrase}</p>
                 </div>
 
                 <div>

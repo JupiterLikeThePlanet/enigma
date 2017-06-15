@@ -19758,6 +19758,7 @@
 
 	var React = __webpack_require__(1);
 	var Message = __webpack_require__(160);
+	var Passphrase = __webpack_require__(161);
 
 	var Main = React.createClass({
 	    displayName: 'Main',
@@ -19771,7 +19772,8 @@
 	                null,
 	                'Main component renders here'
 	            ),
-	            React.createElement(Message, null)
+	            React.createElement(Message, null),
+	            React.createElement(Passphrase, null)
 	        );
 	    }
 	});
@@ -19840,6 +19842,67 @@
 	});
 
 	module.exports = Message;
+
+/***/ }),
+/* 161 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Passphrase = React.createClass({
+	    displayName: 'Passphrase',
+
+
+	    getDefaultProps: function getDefaultProps() {
+	        return {
+	            passphrase: 'AmBtRx7l'
+	        };
+	    },
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            passphrase: this.props.passphrase
+	        };
+	    },
+
+	    onButtonPress: function onButtonPress(e) {
+	        e.preventDefault();
+
+	        console.log("Passphrase button pressed");
+	        // var passphrase = this.refs.passphrase.value
+	    },
+
+	    render: function render() {
+	        var passphrase = this.state.passphrase;
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'p',
+	                    null,
+	                    'Your passphrase is: ',
+	                    passphrase
+	                )
+	            ),
+	            React.createElement(
+	                'div',
+	                null,
+	                React.createElement(
+	                    'button',
+	                    { onClick: this.onButtonPress },
+	                    ' Generate New Passphrase '
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Passphrase;
 
 /***/ })
 /******/ ]);
