@@ -22383,7 +22383,6 @@
 
 
 	    getInitialState: function getInitialState() {
-	        // var new_passphrase = this.refs.ref_passphrase_component.generatePassphrase();
 	        return {
 	            name: '',
 	            message: '',
@@ -22392,27 +22391,8 @@
 	        };
 	    },
 
-	    // generatePassphrase: function(key, passphrase_length) {
-	    //     console.log("hit generatePassphrase function");
-
-	    //    	var pp = ''
-
-	    //     var index = (Math.random() * (key.length - 1)).toFixed(0);  
-
-	    //     for (var i = 0; i < passphrase_length; i++){
-	    //     	pp += key.charAt(Math.floor(Math.random()*key.length))
-	    //     	// console.log(pp += key.charAt(Math.floor(Math.random()*key.length)));
-	    //     }
-
-	    //     return pp
-
-	    // },
-
 	    onGenerate: function onGenerate(new_passphrase) {
 	        // e.preventDefault();
-	        // var new_passphrase = generatePassphrase(key, passphrase_length);
-
-	        // var new_passphrase = this.props.handleGenerate(key, passphrase_length);
 
 	        this.setState({
 	            passphrase: new_passphrase
@@ -22434,7 +22414,7 @@
 	                'Enigma component renders here'
 	            ),
 	            React.createElement(Message, { name: name, message: message, expiration_date: expiration_date }),
-	            React.createElement(Passphrase, { handleGenerate: this.onGenerate, passphrase: passphrase, ref: 'ref_passphrase_component' })
+	            React.createElement(Passphrase, { handleGenerate: this.onGenerate, passphrase: passphrase })
 	        );
 	    }
 	});
@@ -22516,40 +22496,6 @@
 	var Passphrase = React.createClass({
 	    displayName: "Passphrase",
 
-
-	    // generatePassphrase: function(key, passphrase_length) {
-	    //     console.log("hit generatePassphrase function");
-
-	    //     var index = (Math.random() * (key.length - 1)).toFixed(0);  
-	    //     return passphrase_length > 0 ? key[index] + generatePassphrase(passphrase_length - 1, key) : '';
-
-	    //     // return key[index] + generatePassphrase(passphrase_length - 1, key);
-	    //     // var passphrase = this.refs.passphrase.value
-	    // },
-
-	    // getDefaultProps: function() {
-	    //     return {
-	    //         passphrase: ''
-	    //     };
-	    // }, 
-
-	    // getInitialState: function () {
-	    //     var new_passphrase = this.props.handleGenerate(key, passphrase_length);
-	    //     return {
-	    //         passphrase: new_passphrase
-	    //     };
-	    // },
-
-	    // onGenerate: function(e) {
-	    //     e.preventDefault();
-	    //     // var new_passphrase = generatePassphrase(key, passphrase_length);
-	    //     var new_passphrase = this.props.handleGenerate(key, passphrase_length);
-
-	    //     this.setState({
-	    //         passphrase: new_passphrase
-	    //     })
-
-	    // },
 
 	    generatePassphrase: function generatePassphrase() {
 	        // e.preventDefault
