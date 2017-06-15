@@ -48,12 +48,9 @@
 
 	var React = __webpack_require__(1);
 	var ReactDOM = __webpack_require__(158);
+	var Main = __webpack_require__(159);
 
-	ReactDOM.render(React.createElement(
-	    'h1',
-	    null,
-	    'Main App'
-	), document.getElementById('app'));
+	ReactDOM.render(React.createElement(Main, null), document.getElementById('app'));
 
 /***/ }),
 /* 1 */
@@ -19752,6 +19749,97 @@
 
 	module.exports = __webpack_require__(3);
 
+
+/***/ }),
+/* 159 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+	var Message = __webpack_require__(160);
+
+	var Main = React.createClass({
+	    displayName: 'Main',
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'h2',
+	                null,
+	                'Main component renders here'
+	            ),
+	            React.createElement(Message, null)
+	        );
+	    }
+	});
+
+	module.exports = Main;
+
+/***/ }),
+/* 160 */
+/***/ (function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	var React = __webpack_require__(1);
+
+	var Message = React.createClass({
+	    displayName: 'Message',
+
+
+	    getInitialState: function getInitialState() {
+	        return {
+	            name: '',
+	            message: '',
+	            expiration_date: ''
+	        };
+	    },
+
+	    onFormSubmit: function onFormSubmit(e) {
+	        e.preventDefault();
+	    },
+
+	    render: function render() {
+	        return React.createElement(
+	            'div',
+	            null,
+	            React.createElement(
+	                'form',
+	                { onSubmit: this.onFormSubmit },
+	                React.createElement(
+	                    'div',
+	                    { id: 'name_input' },
+	                    React.createElement(
+	                        'h5',
+	                        null,
+	                        ' Name: '
+	                    ),
+	                    React.createElement('input', { type: 'text', name: 'name', placeholder: 'Enter Name' })
+	                ),
+	                React.createElement(
+	                    'div',
+	                    { id: 'message_input' },
+	                    React.createElement(
+	                        'h5',
+	                        null,
+	                        'Message:'
+	                    ),
+	                    React.createElement('textarea', { rows: '10', cols: '30', maxlength: '1200', placeholder: 'Enter Message' })
+	                ),
+	                React.createElement(
+	                    'div',
+	                    { id: 'expiration_input' },
+	                    React.createElement('input', { type: 'text', name: 'expiration_date', placeholder: 'Enter Expiration Date' })
+	                )
+	            )
+	        );
+	    }
+	});
+
+	module.exports = Message;
 
 /***/ })
 /******/ ]);

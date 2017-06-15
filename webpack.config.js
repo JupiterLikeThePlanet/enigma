@@ -10,7 +10,8 @@ module.exports = {
             Passphrase: 'app/components/Passphrase.jsx',
             Encryption: 'app/components/Encryption.jsx',
             Message: 'app/components/Message.jsx',
-            EncryptAPI: 'app/api/EncryptAPI.jsx'
+            EncryptAPI: 'app/api/EncryptAPI.jsx',
+            Main: 'app/components/Main.jsx'
         },
         extensions: ['', '.js', '.jsx']
     },
