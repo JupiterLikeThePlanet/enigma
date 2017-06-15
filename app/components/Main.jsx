@@ -24,8 +24,12 @@ var Main = React.createClass({
  //        var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
  //        var passphrase_length = 6
 
- //        generatePassphrase(key, passphrase_length);
+ //        // generatePassphrase(key, passphrase_length);
+
+ //        window.addEventListener('load', this.generatePassphrase(key, passphrase_length));
  //    },
+
+
 
 
    render: function () {

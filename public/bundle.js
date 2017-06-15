@@ -19784,7 +19784,9 @@
 	    //        var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	    //        var passphrase_length = 6
 
-	    //        generatePassphrase(key, passphrase_length);
+	    //        // generatePassphrase(key, passphrase_length);
+
+	    //        window.addEventListener('load', this.generatePassphrase(key, passphrase_length));
 	    //    },
 
 
@@ -19873,12 +19875,15 @@
 /* 161 */
 /***/ (function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	var React = __webpack_require__(1);
 
+	var key = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+	var passphrase_length = 6;
+
 	var Passphrase = React.createClass({
-	    displayName: "Passphrase",
+	    displayName: 'Passphrase',
 
 
 	    // generatePassphrase: function(key, passphrase_length) {
@@ -19891,74 +19896,52 @@
 	    //     // var passphrase = this.refs.passphrase.value
 	    // },
 
-	    onGenerate: function onGenerate(e) {
-	        e.preventDefault();
-	        console.log("Passphrase button pressed");
-
-	        var key = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-	        var passphrase_length = 6;
-
-	        // debugger
-	        // var new_passphrase = generatePassphrase(key, passphrase_length);
-	        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
-
-	        console.log(new_passphrase);
-	        // debugger
-	        this.setState({
-	            passphrase: new_passphrase
-	            // passphrase: generatePassphrase(key, passphrase_length)
-	        });
-	    },
-
 	    getDefaultProps: function getDefaultProps() {
 	        return {
-	            passphrase: 'AmBtRx7l'
+	            passphrase: ''
 	        };
 	    },
 
 	    getInitialState: function getInitialState() {
+	        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
 	        return {
-	            passphrase: this.props.passphrase
+	            passphrase: new_passphrase
 	        };
 	    },
 
-	    // componentWillMount: function () {
-	    //     var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-	    //     var passphrase_length = 6
+	    onGenerate: function onGenerate(e) {
+	        e.preventDefault();
+	        // var new_passphrase = generatePassphrase(key, passphrase_length);
+	        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
 
-	    //     generatePassphrase(key, passphrase_length);
-	    // },
-
-	    // onComponentMount: function () {
-	    //     var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-	    //     var passphrase_length = 6
-
-	    //     generatePassphrase(key, passphrase_length);
-	    // },
-
+	        this.setState({
+	            passphrase: new_passphrase
+	        });
+	    },
 
 	    render: function render() {
 	        var passphrase = this.state.passphrase;
+
 	        return React.createElement(
-	            "div",
+	            'div',
 	            null,
 	            React.createElement(
-	                "div",
+	                'div',
 	                null,
 	                React.createElement(
-	                    "p",
+	                    'p',
 	                    null,
-	                    "Your passphrase is: ",
+	                    'Your passphrase is: ',
 	                    passphrase
 	                )
 	            ),
 	            React.createElement(
-	                "div",
+	                'div',
 	                null,
 	                React.createElement(
-	                    "button",
+	                    'button',
 	                    { onClick: this.onGenerate },
-	                    " Generate New Passphrase "
+	                    ' Generate New Passphrase '
 	                )
 	            )
 	        );

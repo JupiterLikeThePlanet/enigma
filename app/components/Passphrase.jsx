@@ -1,5 +1,7 @@
 var React = require('react');
 
+const key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+const passphrase_length = 6
 
 var Passphrase = React.createClass ({
 
@@ -13,57 +15,33 @@ var Passphrase = React.createClass ({
     //     // var passphrase = this.refs.passphrase.value
     // },
 
-    onGenerate: function(e) {
-        e.preventDefault();
-        console.log("Passphrase button pressed");
-
-        var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-        var passphrase_length = 6
-
-        // debugger
-        // var new_passphrase = generatePassphrase(key, passphrase_length);
-        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
-
-        console.log(new_passphrase);
-        // debugger
-        this.setState({
-            passphrase: new_passphrase
-            // passphrase: generatePassphrase(key, passphrase_length)
-        })
-
-    },
-
     getDefaultProps: function() {
         return {
-            passphrase: 'AmBtRx7l'
+            passphrase: ''
         };
     }, 
 
     getInitialState: function () {
+        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
         return {
-            passphrase: this.props.passphrase
+            passphrase: new_passphrase
         };
     },
 
-    // componentWillMount: function () {
-    //     var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    //     var passphrase_length = 6
+    onGenerate: function(e) {
+        e.preventDefault();
+        // var new_passphrase = generatePassphrase(key, passphrase_length);
+        var new_passphrase = this.props.handleGenerate(key, passphrase_length);
 
-    //     generatePassphrase(key, passphrase_length);
-    // },
+        this.setState({
+            passphrase: new_passphrase
+        })
 
-    // onComponentMount: function () {
-    //     var key ="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-    //     var passphrase_length = 6
-
-    //     generatePassphrase(key, passphrase_length);
-    // },
-
-
-
+    },
 
     render: function () {
         var passphrase = this.state.passphrase
+
         return (
 
             <div>
