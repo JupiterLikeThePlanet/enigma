@@ -7,6 +7,10 @@ module.exports = {
     resolve: {
         root: __dirname,
         alias: {
+            Passphrase: 'app/components/Passphrase.jsx',
+            Encryption: 'app/components/Encryption.jsx',
+            Message: 'app/components/Message.jsx',
+            EncryptAPI: 'app/api/EncryptAPI.jsx'
         },
         extensions: ['', '.js', '.jsx']
     },
