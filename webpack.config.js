@@ -9,6 +9,7 @@ module.exports = {
         alias: {
             Passphrase: 'app/components/Passphrase.jsx',
             Encryption: 'app/components/Encryption.jsx',
+            Enigma: 'app/components/Enigma.jsx',
             Message: 'app/components/Message.jsx',
             EncryptAPI: 'app/api/EncryptAPI.jsx',
             Main: 'app/components/Main.jsx'
